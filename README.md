@@ -1,7 +1,7 @@
 # Codeasy Homebrew tap
 
 ```sh
-brew install codeasy-org/tap/codex-accounts
+brew install codeasy-digix/tap/codex-accounts
 ```
 
 `codex-accounts` provides per-terminal ChatGPT account selection for the native
@@ -18,6 +18,6 @@ eval "$(codex-accounts shell-init zsh)"
 Use `bash` instead of `zsh` for Bash. Without shell setup, run
 `codex-accounts --account NAME` directly.
 
-[Source, commands, storage and release instructions](https://github.com/codeasy-org/codex-accounts)
+[Source, commands, storage and release instructions](https://github.com/codeasy-digix/codex-accounts)
 
 This tap has no GUI or cross-device conversation synchronization package.

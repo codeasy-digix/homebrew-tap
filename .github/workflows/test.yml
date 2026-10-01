@@ -1,0 +1,34 @@
+name: Homebrew package
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  install:
+    strategy:
+      matrix:
+        os: [macos-14, ubuntu-24.04]
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v7
+      - id: homebrew
+        uses: Homebrew/actions/setup-homebrew@main
+        with:
+          stable: true
+      - name: Install and test the package
+        env:
+          TAP_NAME: ${{ steps.homebrew.outputs.tap-name }}
+          HOMEBREW_NO_AUTO_UPDATE: "1"
+          HOMEBREW_NO_INSTALL_CLEANUP: "1"
+        run: |
+          set -eu
+          test -n "$TAP_NAME"
+          brew style --formula "$TAP_NAME/codex-accounts"
+          brew install "$TAP_NAME/codex-accounts"
+          brew test "$TAP_NAME/codex-accounts"
+          codex-accounts doctor --json

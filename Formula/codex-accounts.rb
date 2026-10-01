@@ -1,13 +1,13 @@
 class CodexAccounts < Formula
   desc "Per-terminal Codex accounts with shared local conversations"
-  homepage "https://github.com/codeasy-org/codex-accounts"
-  version "0.1.0"
+  homepage "https://github.com/codeasy-digix/codex-accounts"
+  version "0.1.1"
   license "MIT"
 
   on_macos do
     on_arm do
-      url "https://github.com/codeasy-org/codex-accounts/releases/download/v0.1.0/codex-accounts_0.1.0_darwin_arm64.tar.gz"
-      sha256 "15c4a27b8cfd43091e324cf03dda127ee8a20fcbdacac9afbc1ce4f962d47ab7"
+      url "https://github.com/codeasy-digix/codex-accounts/releases/download/v0.1.1/codex-accounts_0.1.1_darwin_arm64.tar.gz"
+      sha256 "798a4a74c62ff14c5d02e42f88815492f021fdebaa96ed97fc642c51abe9bf98"
 
       resource "codex-runtime" do
         url "https://github.com/openai/codex/releases/download/rust-v0.159.3/codex-package-aarch64-apple-darwin.tar.gz"
@@ -15,8 +15,8 @@ class CodexAccounts < Formula
       end
     end
     on_intel do
-      url "https://github.com/codeasy-org/codex-accounts/releases/download/v0.1.0/codex-accounts_0.1.0_darwin_amd64.tar.gz"
-      sha256 "e52ccc03bdca2b5dc1806b9bdc5825d23d4d5ac1d5442801ba0af866d0af2378"
+      url "https://github.com/codeasy-digix/codex-accounts/releases/download/v0.1.1/codex-accounts_0.1.1_darwin_amd64.tar.gz"
+      sha256 "8f99303593913094ff517cba668f0aae874efeedae0e18297ea0b6966259c0cb"
 
       resource "codex-runtime" do
         url "https://github.com/openai/codex/releases/download/rust-v0.159.3/codex-package-x86_64-apple-darwin.tar.gz"
@@ -27,8 +27,8 @@ class CodexAccounts < Formula
 
   on_linux do
     on_arm do
-      url "https://github.com/codeasy-org/codex-accounts/releases/download/v0.1.0/codex-accounts_0.1.0_linux_arm64.tar.gz"
-      sha256 "f2dfbfd4800042d679e4bf08e0fa10bd2597cd62e444d1054c25e3dfce13aa68"
+      url "https://github.com/codeasy-digix/codex-accounts/releases/download/v0.1.1/codex-accounts_0.1.1_linux_arm64.tar.gz"
+      sha256 "f7989a330e472ae0508cbcc7a12311b2e2fa421e891ed0b8a5d4959b7788829e"
 
       resource "codex-runtime" do
         url "https://github.com/openai/codex/releases/download/rust-v0.159.3/codex-package-aarch64-unknown-linux-musl.tar.gz"
@@ -36,8 +36,8 @@ class CodexAccounts < Formula
       end
     end
     on_intel do
-      url "https://github.com/codeasy-org/codex-accounts/releases/download/v0.1.0/codex-accounts_0.1.0_linux_amd64.tar.gz"
-      sha256 "f0be44e07ccf69a4af56ecfbf412d98b847ecf2fba0340cdf96eda07b1ba2cd3"
+      url "https://github.com/codeasy-digix/codex-accounts/releases/download/v0.1.1/codex-accounts_0.1.1_linux_amd64.tar.gz"
+      sha256 "3ebe1e1b1f10dd59d17ece619972503e84dcbf35e3e30553a392add8159669af"
 
       resource "codex-runtime" do
         url "https://github.com/openai/codex/releases/download/rust-v0.159.3/codex-package-x86_64-unknown-linux-musl.tar.gz"

@@ -31,6 +31,10 @@ using the previous default before switching. Other named terminal accounts keep
 their selection. Previous default credentials/config are backed up privately.
 Continuation jobs use the selected account and original working directories,
 skip active conversations, and clear their own tmux sessions when finished.
+The external `codex-accounts` program controls `codex continue`: listing and
+selection need no login or model call. Only idle conversations with unresolved
+quota errors appear in the list. Place shell-init after any older Codex shell
+function, or use `codex-accounts continue` directly.
 
 [Source, commands, storage and release instructions](https://github.com/codeasy-digix/codex-accounts)
 

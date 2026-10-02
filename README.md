@@ -20,9 +20,9 @@ Use `bash` instead of `zsh` for Bash. Without shell setup, run
 `codex-accounts --account NAME` directly.
 
 ```sh
-codex account NAME default # Set the machine default login; shared home stays ~/.codex
+codex account NAME --set-default # Set the machine default login; shared home stays ~/.codex
 codex account default      # Return this terminal to the machine default
-codex continue             # List quota-interrupted chats, then select one or all
+codex continue             # Select numbered chats or batch actions from both interrupted groups
 codex continue --all       # Continue idle chats concurrently in named tmux sessions
 ```
 
@@ -32,10 +32,17 @@ their selection. Previous default credentials/config are backed up privately.
 Continuation jobs use the selected account and original working directories,
 skip active conversations, and clear their own tmux sessions when finished.
 The external `codex-accounts` program controls `codex continue`: listing and
-selection need no login or model call. Only idle conversations with unresolved
-quota errors appear in the list. Place shell-init after any older Codex shell
-function, or use `codex-accounts continue` directly.
+selection need no login or model call. Idle conversations interrupted by quota
+limits or other errors appear in separate groups with numbered individual and
+batch choices. Place shell-init after any older Codex shell function, or use
+`codex-accounts continue` directly.
+
+The earlier `codex account NAME default` spelling remains supported.
+When authentication is needed, select device-code or browser sign-in by number.
+`codex account` alone only shows the current environment, account and limits.
 
 [Source, commands, storage and release instructions](https://github.com/codeasy-digix/codex-accounts)
 
 This tap has no GUI or cross-device conversation synchronization package.
+
+Support: [support@digix.kr](mailto:support@digix.kr).

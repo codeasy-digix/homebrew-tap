@@ -1,15 +1,15 @@
 class CodexAccounts < Formula
   desc "Per-terminal Codex accounts with shared local conversations"
   homepage "https://github.com/codeasy-digix/codex-accounts"
-  version "0.2.1"
+  version "0.3.0"
   license "MIT"
 
   depends_on "tmux"
 
   on_macos do
     on_arm do
-      url "https://github.com/codeasy-digix/codex-accounts/releases/download/v0.2.1/codex-accounts_0.2.1_darwin_arm64.tar.gz"
-      sha256 "5d46feb3628360119e12095ad52cdd19511ec92946b5763d46d8054c36c13bd4"
+      url "https://github.com/codeasy-digix/codex-accounts/releases/download/v0.3.0/codex-accounts_0.3.0_darwin_arm64.tar.gz"
+      sha256 "5c4e6620331646e84b8ceec8219fdd7039d9c3a6a92c3875854ef249b4b7b066"
 
       resource "codex-runtime" do
         url "https://github.com/openai/codex/releases/download/rust-v0.159.3/codex-package-aarch64-apple-darwin.tar.gz"
@@ -17,8 +17,8 @@ class CodexAccounts < Formula
       end
     end
     on_intel do
-      url "https://github.com/codeasy-digix/codex-accounts/releases/download/v0.2.1/codex-accounts_0.2.1_darwin_amd64.tar.gz"
-      sha256 "92bcf56b031eab0cac5a899c62227f5f36efec0d7fa3952608df4f8e7ce7ba3f"
+      url "https://github.com/codeasy-digix/codex-accounts/releases/download/v0.3.0/codex-accounts_0.3.0_darwin_amd64.tar.gz"
+      sha256 "bdbe9f197fc73e007fd2454b376bb670a7960fb93fe330d103523460fb0ef3c4"
 
       resource "codex-runtime" do
         url "https://github.com/openai/codex/releases/download/rust-v0.159.3/codex-package-x86_64-apple-darwin.tar.gz"
@@ -29,8 +29,8 @@ class CodexAccounts < Formula
 
   on_linux do
     on_arm do
-      url "https://github.com/codeasy-digix/codex-accounts/releases/download/v0.2.1/codex-accounts_0.2.1_linux_arm64.tar.gz"
-      sha256 "fa6882222d366c2a09888fa15e77cd9d6f3925b1a492227a31090b614ddfb54c"
+      url "https://github.com/codeasy-digix/codex-accounts/releases/download/v0.3.0/codex-accounts_0.3.0_linux_arm64.tar.gz"
+      sha256 "d4157b6319b1a30bec28693033ad0f94ac10ecda6a39719bf9055ec5c8816704"
 
       resource "codex-runtime" do
         url "https://github.com/openai/codex/releases/download/rust-v0.159.3/codex-package-aarch64-unknown-linux-musl.tar.gz"
@@ -38,8 +38,8 @@ class CodexAccounts < Formula
       end
     end
     on_intel do
-      url "https://github.com/codeasy-digix/codex-accounts/releases/download/v0.2.1/codex-accounts_0.2.1_linux_amd64.tar.gz"
-      sha256 "2ea1e143c998f7ecf0f49fe312e19ecab115a8ce455104ca4f5ffff591a98e0a"
+      url "https://github.com/codeasy-digix/codex-accounts/releases/download/v0.3.0/codex-accounts_0.3.0_linux_amd64.tar.gz"
+      sha256 "deaaf326037b0e0fc11cc3e7f7a423fc10c5c443adfc8d80df80d3531964d14e"
 
       resource "codex-runtime" do
         url "https://github.com/openai/codex/releases/download/rust-v0.159.3/codex-package-x86_64-unknown-linux-musl.tar.gz"
@@ -64,9 +64,10 @@ class CodexAccounts < Formula
         Zsh (~/.zshrc):  eval "$(codex-accounts shell-init zsh)"
         Bash (~/.bashrc): eval "$(codex-accounts shell-init bash)"
 
-      Run: codex account NAME; codex account NAME default; codex account default
-      Resume quota-interrupted conversations: codex continue
+      Run: codex account NAME; codex account NAME --set-default; codex account default
+      Resume quota and other interrupted conversations: codex continue
       Your existing conversations and account credentials are retained on uninstall.
+      Support: support@digix.kr
     EOS
   end
 
@@ -82,6 +83,6 @@ class CodexAccounts < Formula
     end
     assert_match "No registered accounts", shell_output("#{bin}/codex-accounts account --list")
     assert_match "not signed in", shell_output("#{bin}/codex-accounts account")
-    assert_match "No quota-interrupted", shell_output("#{bin}/codex-accounts continue --list")
+    assert_match "No interrupted", shell_output("#{bin}/codex-accounts continue --list")
   end
 end

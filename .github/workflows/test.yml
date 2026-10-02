@@ -12,7 +12,7 @@ jobs:
   install:
     strategy:
       matrix:
-        os: [macos-14, ubuntu-24.04]
+        os: [macos-latest, ubuntu-24.04]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v7
@@ -23,8 +23,11 @@ jobs:
       - name: Remove the macOS runner's legacy OpenSSL command links
         if: runner.os == 'macOS'
         run: |
-          if brew list --versions openssl@1.1 >/dev/null 2>&1; then
-            brew unlink openssl@1.1
+          legacy_openssl="$(brew --prefix)/bin/openssl"
+          if [ -L "$legacy_openssl" ]; then
+            case "$(readlink "$legacy_openssl")" in
+              */openssl@1.1/bin/openssl) rm "$legacy_openssl" ;;
+            esac
           fi
       - name: Install and test the package
         env:

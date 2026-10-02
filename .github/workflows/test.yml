@@ -20,6 +20,12 @@ jobs:
         uses: Homebrew/actions/setup-homebrew@main
         with:
           stable: true
+      - name: Remove the macOS runner's legacy OpenSSL command links
+        if: runner.os == 'macOS'
+        run: |
+          if brew list --versions openssl@1.1 >/dev/null 2>&1; then
+            brew unlink openssl@1.1
+          fi
       - name: Install and test the package
         env:
           TAP_NAME: ${{ steps.homebrew.outputs.tap-name }}
